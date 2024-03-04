@@ -206,7 +206,7 @@ Cocoa_GL_CreateContext(_THIS, SDL_Window * window)
         return NULL;
 #endif
     }
-    if ((_this->gl_config.profile_mask == SDL_GL_CONTEXT_PROFILE_CORE) && !lion_or_later) {
+    if ((_this->gl_config.profile_mask == SDL_GL_CONTEXT_PROFILE_CORE)) {
         SDL_SetError ("OpenGL Core Profile is not supported on this platform version");
         return NULL;
     }
@@ -214,14 +214,14 @@ Cocoa_GL_CreateContext(_THIS, SDL_Window * window)
     attr[i++] = NSOpenGLPFAAllowOfflineRenderers;
 
     /* specify a profile if we're on Lion (10.7) or later. */
-    if (lion_or_later) {
+    
         NSOpenGLPixelFormatAttribute profile = NSOpenGLProfileVersionLegacy;
         if (_this->gl_config.profile_mask == SDL_GL_CONTEXT_PROFILE_CORE) {
             profile = NSOpenGLProfileVersion3_2Core;
         }
         attr[i++] = NSOpenGLPFAOpenGLProfile;
         attr[i++] = profile;
-    }
+    
 
     attr[i++] = NSOpenGLPFAColorSize;
     attr[i++] = SDL_BYTESPERPIXEL(display->current_mode.format)*8;
