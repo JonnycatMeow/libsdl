@@ -33,8 +33,8 @@
 
 #include "SDL_loadso.h"
 #include "SDL_opengl.h"
-
-#define DEFAULT_OPENGL  "/System/Library/Frameworks/OpenGL.framework/Libraries/libGL.dylib"
+/*using the mesa version*/
+#define DEFAULT_OPENGL  "/usr/local/lib/libGL.dylib"
 
 /* We still support OpenGL as long as Apple offers it, deprecated or not, so disable deprecation warnings about it. */
 #ifdef __clang__
